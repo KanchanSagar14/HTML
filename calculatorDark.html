@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    #full {
+      font-family: 'Arial', sans-serif;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      height: 90vh;
+      background-color: #282c34;
+      color: white;
+    }
+
+    #calculator {
+
+      width: 300px;
+      border: 2px solid #61dafb;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      background-color: #424242;
+    }
+
+    input {
+      width: calc(100% - 20px);
+      margin-bottom: 10px;
+      padding: 8px;
+      font-size: 20px;
+      border: 1px solid #61dafb;
+      border-radius: 4px;
+      box-sizing: border-box;
+      color: #61dafb;
+      background-color: #282c34;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    button {
+      width: 48px;
+      height: 48px;
+      margin: 2px;
+      font-size: 18px;
+      border: 1px solid #61dafb;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #61dafb;
+      color: #282c34;
+    }
+
+    button:active {
+      background-color: #3f51b5;
+    }
+
+    #equals {
+      width: calc( 100% - 4px);
+      background-color: #4caf50;
+      color: white;
+    }
+    h1{
+      font-family: 'Arial', sans-serif;
+      align-items: center;
+      display: flex;
+      height: 4vh;
+      margin: auto;
+      padding: 10px;
+      justify-content: center;
+      background-color: #282c34;
+      color: #61dafb;
+
+    }
+  </style>
+</head>
+<body>
+  <h1>Calculator</h1>
+  <div id="full">
+<div id="calculator">
+  <input type="text" id="display" readonly>
+  <table>
+    <tr>
+      <td><button onclick="appendToDisplay('1')">1</button></td>
+      <td><button onclick="appendToDisplay('2')">2</button></td>
+      <td><button onclick="appendToDisplay('3')">3</button></td>
+      <td><button onclick="appendToDisplay('+')">+</button></td>
+    </tr>
+    <tr>
+      <td><button onclick="appendToDisplay('4')">4</button></td>
+      <td><button onclick="appendToDisplay('5')">5</button></td>
+      <td><button onclick="appendToDisplay('6')">6</button></td>
+      <td><button onclick="appendToDisplay('-')">-</button></td>
+    </tr>
+    <tr>
+      <td><button onclick="appendToDisplay('7')">7</button></td>
+      <td><button onclick="appendToDisplay('8')">8</button></td>
+      <td><button onclick="appendToDisplay('9')">9</button></td>
+      <td><button onclick="appendToDisplay('*')">*</button></td>
+    </tr>
+    <tr>
+      <td><button onclick="appendToDisplay('0')">0</button></td>
+      <td><button onclick="clearDisplay()">C</button></td>
+      <td><button id="equals" onclick="calculate()">=</button></td>
+      <td><button onclick="appendToDisplay('/')">/</button></td>
+    </tr>
+  </table>
+</div>
+
+<script>
+  function appendToDisplay(value) {
+    document.getElementById('display').value += value;
+  }
+
+  function clearDisplay() {
+    document.getElementById('display').value = '';
+  }
+
+  function calculate() {
+    try {
+      document.getElementById('display').value = eval(document.getElementById('display').value);
+    } catch (error) {
+      document.getElementById('display').value = 'Error';
+    }
+  }
+</script>
+
+</body>
+</html>
